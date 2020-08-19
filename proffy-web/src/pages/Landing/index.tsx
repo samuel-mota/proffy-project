@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"; // para nao carregar todos os recursos novamente ao clicar em um link
 
 // IMAGES / ICONS
@@ -8,11 +8,24 @@ import studyIcon from '../../assets/images/icons/study.svg';
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 
+// SERVICES
+import api from "../../services/api";
+
 // STYLES
 import './styles.css';
 
-// COMPONENT
+
+// COMPONENT ITSELF
 function Landing() {
+  const [totalConnections, setTotalConnections] = useState(0);
+
+  useEffect(() => {
+    api.get('/connections').then(response => {
+      const { total } = response.data;
+      setTotalConnections(total);
+    })
+  }, []); // in the empty array we add variables to watch, if changed will execute the function useEffect
+
   return (
     <div id="page-landing">
       <div id="page-landing-content" className="container">
@@ -36,7 +49,7 @@ function Landing() {
         </div>
 
         <span className="total-connections">
-          Total de 200 conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo"/>
+          Total de {totalConnections} conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo"/>
         </span>
       </div>
     </div>

@@ -10,6 +10,7 @@ import "./styles.css";
 
 interface PageHeaderProps {
   title: string; // obrigatorio, para nao obrigatorio "title?:" adicionar a exclamacao
+  description?: string;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
@@ -24,8 +25,10 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
       </div>
 
       <div className="header-content">
-        <strong>{props.title}</strong>
-        {props.children}
+        <strong>{ props.title }</strong>
+        { props.description && <p>{props.description}</p> /* or use ternary condition ? true : false */}
+
+        { props.children }
       </div>
     </header>
   );
