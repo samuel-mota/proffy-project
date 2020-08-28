@@ -7,7 +7,7 @@ document.querySelector("#add-time")
 function cloneField() {
   // duplicar os campos
   const newFieldContainer = document.querySelector('.schedule-item')
-    .cloneNode(true);
+    .cloneNode(true); // node se refere a tags html
   
   // pegar os campos para limpar 
   const fields = newFieldContainer.querySelectorAll('input');
