@@ -1,4 +1,4 @@
-# NLW#2 Projeto Proffy
+# NLW#2 Proffy Project
 
 Project built in the NLW week
 
