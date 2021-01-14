@@ -30,7 +30,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
   const [isFavorited, setIsFavorited] = useState(favorited); // if something could change by the user, it needs to be in the useState
 
   function handleLinkToWhatsapp() {
-    api.post('connections', {
+    api.post('connections', { //add a conection when click on Entrar em Contato
       user_id: teacher.id,
     })
 
@@ -65,7 +65,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
 
     
     await AsyncStorage.setItem("favorites", JSON.stringify(favoritesArray));
-    console.log(favorites);
+    //console.log(favorites);
   }
 
   return (

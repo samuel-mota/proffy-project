@@ -36,7 +36,7 @@ function TeacherList() {
       },
     });
 
-    setIsFilterVisible(false);
+    setIsFilterVisible(false); // close filter after filtering
     setTeachers(response.data);
 
     // console.log(response.data);
@@ -49,7 +49,7 @@ function TeacherList() {
   }
 
   function loadFavorites() {
-    AsyncStorage.getItem("favorite").then((response) => {
+    AsyncStorage.getItem("favorites").then((response) => {
       if (response) {
         const favoritedTeachers = JSON.parse(response);
         const favoritedTeachersIds = favoritedTeachers.map(
@@ -63,7 +63,7 @@ function TeacherList() {
     });
   }
 
-  useFocusEffect(() => { // NOT WORKING, NEED TO USE CONTEXT
+  useFocusEffect(() => { // NOT WORKING PROPERLY, NEED TO USE CONTEXT
     loadFavorites();
   })
 

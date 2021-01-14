@@ -14,7 +14,7 @@ function Favorites() {
   const [favorites, setFavorites] = useState([]);
 
   function loadFavorites() {
-    AsyncStorage.getItem("favorite").then((response) => {
+    AsyncStorage.getItem("favorites").then((response) => {
       if (response) {
         const favoritedTeachers = JSON.parse(response);
         //console.log(favoritedTeachers);
@@ -23,7 +23,8 @@ function Favorites() {
     });
   }
 
-  useFocusEffect(() => { // executes when screen is focused
+  useFocusEffect(() => {
+    // executes when screen is focused
     loadFavorites();
   });
 
